@@ -37,7 +37,7 @@ export default function CustomizedTables({ data }) {
 
   const headers = data.reduce((output, entry) => {
     const result = output;
-    Object.keys(entry).map((key) => {
+    Object.keys(entry).forEach((key) => {
       if (!result.includes(key)) result.push(key);
     });
     return result;
@@ -50,7 +50,7 @@ export default function CustomizedTables({ data }) {
           <TableRow>
             {headers.map((key) => {
               return (
-                <StyledTableCell>
+                <StyledTableCell key={key}>
                   {
                     // Convert camelcased values to uppercased values to be used as
                     // dynamic headers
@@ -69,7 +69,11 @@ export default function CustomizedTables({ data }) {
           {data.map((row) => (
             <StyledTableRow key={row.name}>
               {headers.map((key) => {
-                return <StyledTableCell>{row[key]}</StyledTableCell>;
+                return (
+                  <StyledTableCell key={`${row.name}-${key}`}>
+                    {row[key]}
+                  </StyledTableCell>
+                );
               })}
             </StyledTableRow>
           ))}

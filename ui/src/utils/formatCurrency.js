@@ -1,4 +1,4 @@
-export default (value) => {
+const formatCurrency = (value) => {
   if (value)
     return `${(value / 100).toLocaleString("en-US", {
       style: "currency",
@@ -6,3 +6,4 @@ export default (value) => {
     })}`;
   return "";
 };
+export default formatCurrency;
