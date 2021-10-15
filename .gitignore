@@ -1,7 +1,5 @@
-
-ui/.DS_Store
-
-api/.DS_Store
+*/.DS_Store
+*/node_modules/
 
 .idea/
 
