@@ -1,4 +1,3 @@
-
 # Welcome to the Edquity coding challenge!
 
 The first thing you should know is that it's totally okay if you don't finish. This challenge is intended to be used for a variety of different skill levels and as such, it's evaluated differently for each skill level. Let's quickly go over what to expect:
@@ -22,4 +21,4 @@ Edquity is an emergency aid disbursement application. We deal with students (use
 
 
 ## Submitting your work
-Upon completion, please create a merge request to this repository with your name in the title. We will be automatically notified of open MR's and we will review it as soon as we can. Good luck!
+Upon completion, please create a merge request to the master branch of your repository and send us the URL. We will review it as soon as we can. Good luck!
