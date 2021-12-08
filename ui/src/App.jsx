@@ -21,7 +21,7 @@ const App = () => {
       const [usersData, applicationsData, paymentsData] = await Promise.all([
         getUsers(),
         getApplications(),
-        getPayments(),
+        getPayments()
       ]);
 
       setUsers(usersData.body);
@@ -35,7 +35,7 @@ const App = () => {
   const initiatePayment = async ({ applicationUuid, requestedAmount }) => {
     const { body } = await createPayment({
       applicationUuid,
-      requestedAmount,
+      requestedAmount
     });
     setPayments([...payments, body]);
   };
@@ -44,11 +44,10 @@ const App = () => {
   if (dataLoaded) {
     tableData = users.map(({ uuid, name, email }) => {
       const { requestedAmount, uuid: applicationUuid } =
-      applications.find((application) => application.userUuid === uuid) || {};
+        applications.find(application => application.userUuid === uuid) || {};
       const { paymentAmount, paymentMethod } =
-      payments.find(
-        (payment) => payment.applicationUuid === applicationUuid
-      ) || {};
+        payments.find(payment => payment.applicationUuid === applicationUuid) ||
+        {};
 
       // Format table data to be passed into the table component, pay button tacked
       // onto the end to allow payments to be issued for each row
@@ -59,19 +58,20 @@ const App = () => {
         requestedAmount: formatCurrency(requestedAmount),
         paymentAmount: formatCurrency(paymentAmount),
         paymentMethod,
-        initiatePayment: !paymentAmount ? (
-          <Button
-            onClick={() =>
-              initiatePayment({
-                applicationUuid,
-                requestedAmount,
-              })
-            }
-            variant="contained"
-          >
-            Pay
-          </Button>
-        ) : null,
+        initiatePayment:
+          requestedAmount !== paymentAmount ? (
+            <Button
+              onClick={() =>
+                initiatePayment({
+                  applicationUuid,
+                  requestedAmount
+                })
+              }
+              variant="contained"
+            >
+              Pay
+            </Button>
+          ) : null
       };
     });
   }
